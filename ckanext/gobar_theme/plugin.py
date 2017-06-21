@@ -6,7 +6,7 @@ import ckanext.gobar_theme.routing as gobar_routes
 import ckanext.gobar_theme.actions as gobar_actions
 
 
-class Gobar_ThemePlugin(plugins.SingletonPlugin):
+class Gobar_ThemeBasePlugin(plugins.SingletonPlugin):
     implements(plugins.IConfigurer)
     implements(IRoutes, inherit=True)
     implements(plugins.ITemplateHelpers)
@@ -42,5 +42,6 @@ class Gobar_ThemePlugin(plugins.SingletonPlugin):
             'json_loads': gobar_helpers.json_loads,
             'update_frequencies': gobar_helpers.update_frequencies,
             'field_types': gobar_helpers.field_types,
-            'accepted_mime_types': gobar_helpers.accepted_mime_types
+            'accepted_mime_types': gobar_helpers.accepted_mime_types,
+            'valid_length': gobar_helpers.valid_length
         }

@@ -26,9 +26,6 @@ class GobArRouter:
         self.remove_tags()
         self.remove_revision()
         #self.remove_admin()
-        self.connect_api()
-        self.connectThemeTaxonomy()
-        self.connect_error_pages()
 
     def connect_home(self):
         self.home_routes.connect('/', action='index')
@@ -47,6 +44,7 @@ class GobArRouter:
         with SubMapper(self.route_map, controller=self.package_controller) as m:
             m.connect('search', '/dataset', action='search', highlight_actions='index search')
             m.connect('add dataset', '/dataset/new', action='new')
+            m.connect('edit dataset', '/dataset/edit/{id}', action='edit')
             m.connect('new resource', '/dataset/new_resource/{id}', action='new_resource')
         self.route_map.connect('/dataset/{id}/archivo/{resource_id}', action='resource_read', controller='package')
         self.redirect(
@@ -102,7 +100,6 @@ class GobArRouter:
         )
 
     def connect_users(self):
-        self.route_map.connect('login', '/635511788', action='login', controller='user')
         self.route_map.connect('/logout', action='logout', controller='user')
         self.route_map.connect('user_datasets', '/user/{id:.*}', action='read',
                                controller='ckanext.gobar_theme.controller:GobArUserController')

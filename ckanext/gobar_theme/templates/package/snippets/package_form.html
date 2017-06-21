@@ -1,7 +1,7 @@
 {% import 'macros/form.html' as form %}
 {% set action = c.form_action or '' %}
 
-<form id="dataset-edit" class="dataset-form form-horizontal" method="post" action="{{ action }}"
+<form novalidate="novalidate" id="dataset-edit" class="dataset-form form-horizontal" method="post" action="{{ action }}"
       data-module="basic-form">
     {% block stages %}
         {{ h.snippet('package/snippets/stages.html', stages=stage) }}
@@ -12,13 +12,16 @@
     <input type="hidden" name="pkg_name" value="{{ data.id }}"/>
     {% block errors %}{{ form.errors(error_summary) }}{% endblock %}
 
-    {% snippet 'package/snippets/package_basic_fields.html', data=data, errors=errors, licenses=c.licenses, groups_available=c.groups_available %}
+    {% block snippets %}
+        {% snippet 'package/snippets/package_basic_fields.html', data=data, errors=errors, licenses=c.licenses, groups_available=c.groups_available %}
 
-    {% snippet "package/snippets/package_edit_groups.html", selected_groups=data.groups, remaining_groups=groups_available %}
+        {% snippet "package/snippets/package_edit_groups.html", selected_groups=data.groups, remaining_groups=groups_available %}
 
-    {% snippet 'package/snippets/package_secondary_fields.html', data=data, errors=errors, licenses=c.licenses, groups_available=c.groups_available %}
+        {% snippet 'package/snippets/package_secondary_fields.html', data=data, errors=errors, licenses=c.licenses, groups_available=c.groups_available %}
 
-    {% snippet 'package/snippets/package_metadata_fields.html', data=data, errors=errors %}
+        {% snippet 'package/snippets/package_metadata_fields.html', data=data, errors=errors %}
+    {% endblock %}
+
 
     <div class="form-actions">
         {% block delete_button %}

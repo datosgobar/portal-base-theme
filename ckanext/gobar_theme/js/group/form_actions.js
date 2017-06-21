@@ -54,4 +54,8 @@ $(function () {
         return formIsValid();
     });
 
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 222236bab329a6d6a7d0d4b0bc3dcc2bd6fc5de5

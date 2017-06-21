@@ -109,6 +109,7 @@
         a.btn {
           margin-left: 0;
           text-transform: uppercase;
+          cursor: pointer;
           padding: 12px;
           cursor: pointer;
         }
@@ -117,7 +118,6 @@
         }
         a.hover {
           color: white;
-          cursor: pointer;
         }
       }
 

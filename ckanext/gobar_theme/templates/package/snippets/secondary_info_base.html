@@ -10,19 +10,7 @@
                 <div class="col-xs-5 title">
                     Temas
                 </div>
-                <div class="col-xs-7 value">
-                    {%- for group in pkg.groups %}
-                        <div class="group-img-container">
-                            <a href="{{ h.add_url_param(new_params={'groups': group.name}, alternative_url=dataset_url) }}">
-                                {%- if group.image_display_url|length > 0 -%}
-                                    <img src="{{ h.cut_img_path(group.image_display_url) }}"
-                                         data-title="{{ group.title }}"
-                                         class="group-image" data-replace="svg">
-                                {%- endif -%}
-                            </a>
-                        </div>
-                    {%- endfor %}
-                </div>
+                {% block groups %}{% endblock %}
             </div>
         {% endif %}
 
@@ -59,9 +47,7 @@
                         <div class="col-xs-5 title">
                             Frecuencia de actualización
                         </div>
-                        <div class="col-xs-7 value">
-                            <p>{{ h.update_frequencies()[extra.value].decode('utf-8') }}</p>
-                        </div>
+                        {% block update_frequencies %}{% endblock %}
                     </div>
                 {% endif %}
             {% endfor %}

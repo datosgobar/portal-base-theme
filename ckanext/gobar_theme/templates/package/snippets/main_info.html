@@ -1,7 +1,6 @@
 <div id="pkg-main-info" class="col-xs-12 col-md-8">
-    <div id="pkg-path">
-        <a href="{{ h.url_for(controller='package', action='search') }}">Datos Argentina</a> / Dataset
-    </div>
+    {% block title %}
+    {% endblock %}
     <div id="pkg-title-and-desc">
         {% if h.check_access('package_update', {'id':pkg.id }) %}
             {% link_for 'EDITAR DATASET', controller='package', action='edit', id=pkg.name, class_='btn btn-blue edit-button' %}
