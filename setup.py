@@ -73,7 +73,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        gobar_theme=ckanext.gobar_theme.plugin:Gobar_ThemeBasePlugin
+        gobar_theme_base=ckanext.gobar_theme_base.plugin:Gobar_ThemeBasePlugin
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
     ''',
